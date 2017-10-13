@@ -1,0 +1,30 @@
+﻿@model ProjectTest.Data.Model.Drink
+
+
+<div class="col-lg-4 col-md-4 col-xs-12 col-sm-12" style="margin-bottom:5px;">
+    <div class="thumbnail">
+
+        <div class="row" style="margin:0 auto;">
+            <center>
+                <img src="@Model.ImageUrl" alt="" width="200px" height="200px" />
+            </center>
+        </div>
+        <div class="caption" style="margin:0 auto;">
+
+            <div class="col-lg-6 col-md-6 col-sm-12 Col-xs-12">
+                <h1> @Model.Name</h1>
+            </div>
+            <div class="col-lg-6 col-md-6 col-sm-12 Col-xs-12">
+                <h1 class="pull-right"> @Model.Price.ToString("C")</h1>
+            </div>
+            <div class="row" style="margin:0 auto;">
+                <p>@Model.ShortDescription</p>
+            </div>
+
+        </div>
+
+
+    </div>
+
+
+</div>
