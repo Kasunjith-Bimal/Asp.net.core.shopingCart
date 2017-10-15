@@ -53,7 +53,7 @@ namespace ProjectTest
             app.UseSession();
             app.UseMvcWithDefaultRoute();
 
-            DbInitializer.seed(app);
+            //DbInitializer.seed(app);
         }
     }
 }

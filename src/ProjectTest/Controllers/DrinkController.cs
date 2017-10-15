@@ -22,12 +22,28 @@ namespace ProjectTest.Controllers
 
         }
 
-        public IActionResult List()
+        public IActionResult List(string categoryName)
         {
             DrinkViewModel drinkviewmodel = new DrinkViewModel();
-
             drinkviewmodel.Drinks = _drinkRepository.Drinks;
-            drinkviewmodel.CurentCategory = "Drink Cateogory";
+            if (string.IsNullOrEmpty(categoryName))
+            {
+                
+                drinkviewmodel.CurentCategory = "Drink Cateogory";
+
+            }
+            else
+            {
+                if(categoryName== "Alcoholic")
+                {
+                    drinkviewmodel.Drinks = drinkviewmodel.Drinks.Where(x => x.Category.CategoryName == "Alcoholic").ToList();
+                }else if(categoryName == "NonAlcoholic")
+                {
+                    drinkviewmodel.Drinks = drinkviewmodel.Drinks.Where(x => x.Category.CategoryName == "NonAlcoholic").ToList();
+                }
+
+            }
+            
             
             return View(drinkviewmodel);
         }

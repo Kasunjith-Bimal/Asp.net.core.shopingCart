@@ -17,7 +17,7 @@ namespace ProjectTest.Controllers
         private readonly IShopingCart _shopingCartRepository;
         private readonly ShopingCard _shopingCart;
 
-        public ShopingCartController(IDrink drinkRepository, IShopingCart shopingCartRepository,)
+        public ShopingCartController(IDrink drinkRepository, IShopingCart shopingCartRepository)
         {
             _drinkRepository = drinkRepository;
             _shopingCartRepository = shopingCartRepository;
