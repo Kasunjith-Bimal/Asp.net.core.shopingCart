@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 using ProjectTest.Data.Interface;
 using ProjectTest.Data.Moke;
 using ProjectTest.ViewModel;
+using ProjectTest.Data.Model;
 
 namespace ProjectTest.Controllers
 {
@@ -48,6 +49,13 @@ namespace ProjectTest.Controllers
             return View(drinkviewmodel);
         }
        
+        public IActionResult Details(int drinkid)
+        {
 
+            Drink Drinkobj = _drinkRepository.Drinks.Where(x => x.DrinkId == drinkid).FirstOrDefault();
+
+            return View(Drinkobj);
+          
+        }
     }
 }

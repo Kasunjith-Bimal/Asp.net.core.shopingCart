@@ -1,0 +1,18 @@
+﻿@model ProjectTest.ViewModel.HomeViewModel
+
+<link href="~/lib/bootstrap/dist/css/bootstrap.css" rel="stylesheet" />
+<link href="~/Content/Site.css" rel="stylesheet" />
+<script src="~/lib/jquery/dist/jquery.js"></script>
+<script src="~/lib/bootstrap/dist/js/bootstrap.js"></script>
+
+
+@await Html.PartialAsync("~/Views/Shared/Carosoal.cshtml")
+<div class="row">
+@foreach (var DrinkItem in Model.PreferredDrinks)
+{
+    @Html.Partial("~/Views/Shared/DrinkSummery.cshtml", DrinkItem)
+}
+
+</div>
+
+

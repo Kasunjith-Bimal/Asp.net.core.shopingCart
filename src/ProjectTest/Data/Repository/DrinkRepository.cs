@@ -16,16 +16,8 @@ namespace ProjectTest.Data.Repository
             _appDbContext = appDbContext;
 
         }
-        
-        
 
-        public IEnumerable<Drink> GetAllNonAlcoholicDrinks
-        {
-            get
-            {
-                throw new NotImplementedException();
-            }
-        }
+        public IEnumerable<Drink> Drinks => _appDbContext.Drinks;
 
         public IEnumerable<Drink> PreferredDrinks => _appDbContext.Drinks.Where(x=>x.IsPrefeedDrink==true).ToList();
 
