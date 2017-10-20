@@ -1,0 +1,14 @@
+﻿@model ProjectTest.ViewModel.ShopingCartViewModel
+
+
+@if (Model.ShopingCard.ShoppingCardItems.Count > 0)
+{
+    <li>
+        <a asp-controller="ShoppingCart">
+            <span class="glyphicon glyphicon-shopping-cart"></span>
+            <span id="cart-status">
+                @Model.ShopingCard.ShoppingCardItems.Count
+            </span>
+        </a>
+    </li>
+}

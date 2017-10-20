@@ -51,9 +51,17 @@ namespace ProjectTest
             app.UseStatusCodePages();
             app.UseStaticFiles();
             app.UseSession();
-            app.UseMvcWithDefaultRoute();
+            //app.UseMvcWithDefaultRoute();
+            app.UseMvc(route =>
+            {
+                route.MapRoute(name: "categoryFilter", template: "Drink/{action}/{category?}", defaults: new { Controller = "Drink", action = "List" });
+                route.MapRoute(name: "default", template: "{controller=Home}/{action=Index}/{id?}");
 
-            //DbInitializer.seed(app);
+            });
         }
+
+        //DbInitializer.seed(app);
     }
 }
+
+                ;

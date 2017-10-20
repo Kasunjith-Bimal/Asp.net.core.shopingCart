@@ -23,24 +23,33 @@ namespace ProjectTest.Controllers
 
         }
 
-        public IActionResult List(string categoryName)
+       
+        public ViewResult List(string category)
         {
             DrinkViewModel drinkviewmodel = new DrinkViewModel();
             drinkviewmodel.Drinks = _drinkRepository.Drinks;
-            if (string.IsNullOrEmpty(categoryName))
+            int categoryid=0;
+            
+            if (string.IsNullOrEmpty(category))
             {
                 
-                drinkviewmodel.CurentCategory = "Drink Cateogory";
+                drinkviewmodel.CurentCategory = "All Drink Cateogory";
 
             }
             else
+
             {
-                if(categoryName== "Alcoholic")
+                if(category == "Alcoholic")
                 {
-                    drinkviewmodel.Drinks = drinkviewmodel.Drinks.Where(x => x.Category.CategoryName == "Alcoholic").ToList();
-                }else if(categoryName == "NonAlcoholic")
+                    categoryid = _categoryRepository.Categories.Where(x => x.CategoryName == category).Select(x => x.CategoryId).FirstOrDefault();
+                    drinkviewmodel.Drinks = drinkviewmodel.Drinks.Where(x => x.CategoryId == categoryid).ToList();
+                    drinkviewmodel.CurentCategory = category;
+                }
+                else if(category == "NonAlcoholic")
                 {
-                    drinkviewmodel.Drinks = drinkviewmodel.Drinks.Where(x => x.Category.CategoryName == "NonAlcoholic").ToList();
+                    categoryid = _categoryRepository.Categories.Where(x => x.CategoryName == category).Select(x => x.CategoryId).FirstOrDefault();
+                    drinkviewmodel.Drinks = drinkviewmodel.Drinks.Where(x => x.CategoryId == categoryid).ToList();
+                    drinkviewmodel.CurentCategory = category;
                 }
 
             }
