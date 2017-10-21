@@ -36,16 +36,18 @@ namespace ProjectTest.Data.Model
         {
             var shopingCardItem = _appDbContext.ShopingCardItems.Where(x => x.Drink.DrinkId == drink.DrinkId && x.ShopingCardId == ShopingCardId).FirstOrDefault();
 
-            
+            //ShopingCardItem shoppingcardItems = new ShopingCardItem();
+            //shoppingcardItems = shopingCardItem;
             if (shopingCardItem == null)
             {
+                ShopingCardItem Shopingcartitem = new ShopingCardItem();
 
 
-                shopingCardItem.Amount = 1;
-                shopingCardItem.Drink = drink;
-                shopingCardItem.ShopingCardId = ShopingCardId;
+                Shopingcartitem.Amount = amount;
+                Shopingcartitem.Drink = drink;
+                Shopingcartitem.ShopingCardId = ShopingCardId;
 
-                _appDbContext.ShopingCardItems.Add(shopingCardItem);
+                _appDbContext.ShopingCardItems.Add(Shopingcartitem);
 
               
 
@@ -105,8 +107,10 @@ namespace ProjectTest.Data.Model
 
         public decimal GetShopingCardTotal()
         {
-            var shopingCardItemTotal = _appDbContext.ShopingCardItems.Where(x => x.ShopingCardId == ShopingCardId).Select(x=>x.Drink.Price * x.Amount).Sum();
-            return shopingCardItemTotal;
+
+            decimal total = _appDbContext.ShopingCardItems.Where(c => c.ShopingCardId == ShopingCardId).Sum(c => (decimal)c.Drink.Price * c.Amount);
+          
+            return total;
         }
     }
 }

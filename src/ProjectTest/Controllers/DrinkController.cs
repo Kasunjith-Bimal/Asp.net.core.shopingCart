@@ -37,7 +37,6 @@ namespace ProjectTest.Controllers
 
             }
             else
-
             {
                 if(category == "Alcoholic")
                 {

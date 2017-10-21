@@ -23,13 +23,13 @@ namespace ProjectTest.Data.Model
             if (!context.Drinks.Any())
             {
                 context.AddRange(
-                    new Drink { ShortDescription = "sh1", Price = 12.55M, LongtDescription = "shlong1", Name = "na1", ImageUrl = "../Images/a.jpg", InStock = 50, ImageThumbnealUrl = "../Images/a.jpg", IsPrefeedDrink = true, Category = Categories["Cat1"] },
-                    new Drink { ShortDescription = "sh2", Price = 12.25M, LongtDescription = "shlong2", Name = "na2", ImageUrl = "../Images/b.jpg", InStock = 50, ImageThumbnealUrl = "../Images/a.jpg", IsPrefeedDrink = false, Category = Categories["Cat2"] },
-                    new Drink { ShortDescription = "sh3", Price = 12.25M, LongtDescription = "shlong2", Name = "na3", ImageUrl = "../Images/i.jpg", InStock = 50, ImageThumbnealUrl = "../Images/a.jpg", IsPrefeedDrink = false, Category = Categories["Cat3"] },
-                    new Drink { ShortDescription = "sh4", Price = 12.25M, LongtDescription = "shlong2", Name = "na4", ImageUrl = "../Images/d.jpg", InStock = 50, ImageThumbnealUrl = "../Images/a.jpg", IsPrefeedDrink = true, Category = Categories["Cat2"] },
-                    new Drink { ShortDescription = "sh5", Price = 12.25M, LongtDescription = "shlong2", Name = "n52", ImageUrl = "../Images/h.jpg", InStock = 50, ImageThumbnealUrl = "../Images/a.jpg", IsPrefeedDrink = false, Category = Categories["Cat3"] },
-                    new Drink { ShortDescription = "sh6", Price = 12.25M, LongtDescription = "shlong2", Name = "na6", ImageUrl = "../Images/f.jpg", InStock = 50, ImageThumbnealUrl = "../Images/a.jpg", IsPrefeedDrink = false, Category = Categories["Cat1"] },
-                    new Drink { ShortDescription = "sh7", Price = 12.25M, LongtDescription = "shlong2", Name = "na7", ImageUrl = "../Images/h.jpg", InStock = 50, ImageThumbnealUrl = "../Images/a.jpg", IsPrefeedDrink = false, Category = Categories["Cat2"] }
+                    new Drink { ShortDescription = "sh1", Price = 12.55M, LongtDescription = "shlong1", Name = "na1", ImageUrl = "/Images/a.jpg", InStock = 50, ImageThumbnealUrl = "../Images/a.jpg", IsPrefeedDrink = true, Category = Categories["Cat1"] },
+                    new Drink { ShortDescription = "sh2", Price = 12.25M, LongtDescription = "shlong2", Name = "na2", ImageUrl = "/Images/b.jpg", InStock = 50, ImageThumbnealUrl = "../Images/a.jpg", IsPrefeedDrink = false, Category = Categories["Cat2"] },
+                    new Drink { ShortDescription = "sh3", Price = 12.25M, LongtDescription = "shlong2", Name = "na3", ImageUrl = "/Images/i.jpg", InStock = 50, ImageThumbnealUrl = "../Images/a.jpg", IsPrefeedDrink = false, Category = Categories["Cat3"] },
+                    new Drink { ShortDescription = "sh4", Price = 12.25M, LongtDescription = "shlong2", Name = "na4", ImageUrl = "/Images/d.jpg", InStock = 50, ImageThumbnealUrl = "../Images/a.jpg", IsPrefeedDrink = true, Category = Categories["Cat2"] },
+                    new Drink { ShortDescription = "sh5", Price = 12.25M, LongtDescription = "shlong2", Name = "n52", ImageUrl = "/Images/h.jpg", InStock = 50, ImageThumbnealUrl = "../Images/a.jpg", IsPrefeedDrink = false, Category = Categories["Cat3"] },
+                    new Drink { ShortDescription = "sh6", Price = 12.25M, LongtDescription = "shlong2", Name = "na6", ImageUrl = "/Images/f.jpg", InStock = 50, ImageThumbnealUrl = "../Images/a.jpg", IsPrefeedDrink = false, Category = Categories["Cat1"] },
+                    new Drink { ShortDescription = "sh7", Price = 12.25M, LongtDescription = "shlong2", Name = "na7", ImageUrl = "/Images/h.jpg", InStock = 50, ImageThumbnealUrl = "../Images/a.jpg", IsPrefeedDrink = false, Category = Categories["Cat2"] }
 
 
 
@@ -53,8 +53,8 @@ namespace ProjectTest.Data.Model
                 {
                     var categorylist = new Category[]
                     {
-                    new Category {CategoryName="Cat1",Description="cat1des" },
-                    new Category {CategoryName="Cat2",Description="cat2des" },
+                    new Category {CategoryName="Alcoholic",Description="cat1des" },
+                    new Category {CategoryName="NonAlcoholic",Description="cat2des" },
                     new Category {CategoryName="Cat3",Description="cat3des" },
                     };
 

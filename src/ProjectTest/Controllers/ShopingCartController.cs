@@ -16,12 +16,14 @@ namespace ProjectTest.Controllers
         private readonly IDrink _drinkRepository;
         private readonly IShopingCart _shopingCartRepository;
         private readonly ShopingCard _shopingCart;
-
-        public ShopingCartController(IDrink drinkRepository, IShopingCart shopingCartRepository)
+        private readonly ICategory _categoryRepository;
+        Drink drinks = new Drink();
+        public ShopingCartController(IDrink drinkRepository, IShopingCart shopingCartRepository, ICategory categoryRepository, ShopingCard shopingCart)
         {
             _drinkRepository = drinkRepository;
             _shopingCartRepository = shopingCartRepository;
-
+            _categoryRepository = categoryRepository;
+            _shopingCart = shopingCart;
         }
         // GET: /<controller>/
         public IActionResult Index()
@@ -39,20 +41,22 @@ namespace ProjectTest.Controllers
         }
 
 
-        public IActionResult AddToShopingCart(int drinkid)
+        public RedirectToActionResult AddToShopingCart(int drinkid)
         {
-            var selectdrink = _drinkRepository.Drinks.Where(X => X.DrinkId == drinkid).FirstOrDefault();
-
-            if (selectdrink != null)
+            
+            drinks = _drinkRepository.Drinks.Where(x=>x.DrinkId==drinkid).ToList().FirstOrDefault();
+           //int categoryid= _drinkRepository.Drinks.Where(x => x.DrinkId == drinkid).Select(x => x.CategoryId).FirstOrDefault();
+           // drink.Category = _categoryRepository.Categories.Where(x => x.CategoryId == categoryid).FirstOrDefault();
+            if (drinks != null)
             {
-                _shopingCart.AddCard(selectdrink, 1);
+                _shopingCart.AddCard(drinks, 1);
             }
 
            return RedirectToAction("Index");
         }
 
 
-        public IActionResult ReMoveShopingCart(int drinkid)
+        public RedirectToActionResult ReMoveShopingCart(int drinkid)
         {
             var selectdrink = _drinkRepository.Drinks.Where(X => X.DrinkId == drinkid).FirstOrDefault();
 

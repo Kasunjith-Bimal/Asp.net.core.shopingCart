@@ -36,6 +36,7 @@ namespace ProjectTest
             services.AddTransient<IDrink, DrinkRepository>();
             services.AddTransient<ICategory, CategoryRepository>();
             services.AddTransient<IShopingCart, ShopingCartRepository>();
+            services.AddTransient<IOrder, OrderRepository>();
             services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
             services.AddScoped(sp => ShopingCard.GetCart(sp));
             services.AddMvc();
@@ -51,17 +52,18 @@ namespace ProjectTest
             app.UseStatusCodePages();
             app.UseStaticFiles();
             app.UseSession();
+            DbInitializer.seed(app);
             //app.UseMvcWithDefaultRoute();
             app.UseMvc(route =>
             {
                 route.MapRoute(name: "categoryFilter", template: "Drink/{action}/{category?}", defaults: new { Controller = "Drink", action = "List" });
                 route.MapRoute(name: "default", template: "{controller=Home}/{action=Index}/{id?}");
-
+                
             });
         }
 
-        //DbInitializer.seed(app);
+        
     }
 }
 
-                ;
+         

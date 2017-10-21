@@ -18,21 +18,23 @@ namespace ProjectTest.Components
 
         public IViewComponentResult Invoke()
         {
-            List<ShopingCardItem> listdumy = new List<ShopingCardItem>();
-            ShopingCardItem shop = new ShopingCardItem();
-            listdumy.Add(shop);
-            ShopingCardItem shop1 = new ShopingCardItem();
-            listdumy.Add(shop1);
+            //List<ShopingCardItem> listdumy = new List<ShopingCardItem>();
+            //ShopingCardItem shop = new ShopingCardItem();
+            //listdumy.Add(shop);
+            //ShopingCardItem shop1 = new ShopingCardItem();
+            //listdumy.Add(shop1);
 
-            //var shoppingcarditem = _shopingCard.getShopingCardItems();
-            var shoppingcarditem = listdumy;
+            var shoppingcarditem = _shopingCard.getShopingCardItems();
+            //var shoppingcarditem = listdumy;
             _shopingCard.ShoppingCardItems = shoppingcarditem;
 
             ShopingCartViewModel shopingCardViewModel = new ShopingCartViewModel();
 
             shopingCardViewModel.ShopingCard = _shopingCard;
-            //shopingCardViewModel.ShopingCardTotal = _shopingCard.GetShopingCardTotal();
-            shopingCardViewModel.ShopingCardTotal = 0;
+            decimal shopingCardtotal = _shopingCard.GetShopingCardTotal();
+
+            shopingCardViewModel.ShopingCardTotal = shopingCardtotal;
+            //shopingCardViewModel.ShopingCardTotal = 0;
             return View(shopingCardViewModel);
         }
 

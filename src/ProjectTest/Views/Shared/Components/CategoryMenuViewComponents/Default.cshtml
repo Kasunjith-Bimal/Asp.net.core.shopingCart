@@ -1,0 +1,15 @@
+﻿@model IEnumerable<ProjectTest.Data.Model.Category>
+<li class="dropdown">
+    <a class="dropdown-toggle" data-toggle="dropdown" asp-controller="Drink" asp-action="Index" aria-expanded="true">
+        Drink Category
+        <span class="caret"></span>
+    </a>
+    <ul class="dropdown-menu">
+        @foreach (var category in Model)
+        {
+            <li><a asp-controller="Drink" asp-action="List" asp-route-category="@category.CategoryName">@category.CategoryName</a></li>
+        }
+        <li class="divider"></li>
+        <li><a asp-controller="Drink" asp-action="List" asp-route-category="">All Drinks </a></li>
+    </ul>
+ </li>

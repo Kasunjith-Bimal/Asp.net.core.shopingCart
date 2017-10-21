@@ -22,5 +22,10 @@ namespace ProjectTest.Data
 
         public DbSet<ShopingCardItem> ShopingCardItems { get; set; }
 
+
+        public DbSet<Order> Orders { get; set; }
+
+        public DbSet<OrderDetail> OrderDetails { get; set; }
+
     }
 }

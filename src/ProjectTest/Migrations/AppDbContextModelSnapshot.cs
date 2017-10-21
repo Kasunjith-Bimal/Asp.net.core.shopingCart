@@ -60,6 +60,60 @@ namespace ProjectTest.Migrations
                     b.ToTable("Drinks");
                 });
 
+            modelBuilder.Entity("ProjectTest.Data.Model.Order", b =>
+                {
+                    b.Property<int>("OrderId")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<string>("AddressLine1");
+
+                    b.Property<string>("AddressLine2");
+
+                    b.Property<string>("Country");
+
+                    b.Property<string>("Email");
+
+                    b.Property<string>("FirstName");
+
+                    b.Property<string>("LastName");
+
+                    b.Property<DateTime>("OrderPlaced");
+
+                    b.Property<string>("OrderTotal");
+
+                    b.Property<string>("PhoneNumber");
+
+                    b.Property<string>("State");
+
+                    b.Property<string>("ZipCode");
+
+                    b.HasKey("OrderId");
+
+                    b.ToTable("Orders");
+                });
+
+            modelBuilder.Entity("ProjectTest.Data.Model.OrderDetail", b =>
+                {
+                    b.Property<int>("OrderDetailId")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<int>("Amount");
+
+                    b.Property<int>("DrinkId");
+
+                    b.Property<int>("OrderId");
+
+                    b.Property<decimal>("Price");
+
+                    b.HasKey("OrderDetailId");
+
+                    b.HasIndex("DrinkId");
+
+                    b.HasIndex("OrderId");
+
+                    b.ToTable("OrderDetails");
+                });
+
             modelBuilder.Entity("ProjectTest.Data.Model.ShopingCardItem", b =>
                 {
                     b.Property<int>("ShopingCardItemId")
@@ -83,6 +137,19 @@ namespace ProjectTest.Migrations
                     b.HasOne("ProjectTest.Data.Model.Category", "Category")
                         .WithMany("Drinks")
                         .HasForeignKey("CategoryId")
+                        .OnDelete(DeleteBehavior.Cascade);
+                });
+
+            modelBuilder.Entity("ProjectTest.Data.Model.OrderDetail", b =>
+                {
+                    b.HasOne("ProjectTest.Data.Model.Drink", "Drink")
+                        .WithMany()
+                        .HasForeignKey("DrinkId")
+                        .OnDelete(DeleteBehavior.Cascade);
+
+                    b.HasOne("ProjectTest.Data.Model.Order", "Order")
+                        .WithMany("OrderLines")
+                        .HasForeignKey("OrderId")
                         .OnDelete(DeleteBehavior.Cascade);
                 });
 
