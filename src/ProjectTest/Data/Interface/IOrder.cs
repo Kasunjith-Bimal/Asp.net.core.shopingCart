@@ -9,5 +9,7 @@ namespace ProjectTest.Data.Interface
     public interface IOrder
     {
         void CreateOrder(Order order);
+
+        void UpdateOrderTotalPrice(Order order);
     }
 }

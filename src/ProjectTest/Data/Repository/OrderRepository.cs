@@ -38,6 +38,23 @@ namespace ProjectTest.Data.Repository
 
             }  
             _appDbContext.SaveChanges();
+
+            int orderid =_appDbContext.OrderDetails.Select(x => x.OrderId).Max();
+            decimal tottal =_appDbContext.OrderDetails.Where(x =>(decimal) x.OrderId == orderid).Sum(x => x.Price * x.Amount);
+            string totalorder = Convert.ToString(tottal);
+            int Ordersid = _appDbContext.Orders.Select(x => x.OrderId).Max();
+            Order Ordersdata = _appDbContext.Orders.Where(x => x.OrderId == Ordersid).FirstOrDefault();
+            Ordersdata.OrderTotal = totalorder;
+            UpdateOrderTotalPrice(Ordersdata);
+            _appDbContext.Orders.Update(Ordersdata);
+            _appDbContext.SaveChanges();
+          
+
+        }
+
+        public void UpdateOrderTotalPrice(Order order)
+        {
+           
         }
     }
 }

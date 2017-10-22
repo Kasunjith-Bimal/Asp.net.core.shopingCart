@@ -24,6 +24,7 @@ namespace ProjectTest.Components
             //ShopingCardItem shop1 = new ShopingCardItem();
             //listdumy.Add(shop1);
 
+
             var shoppingcarditem = _shopingCard.getShopingCardItems();
             //var shoppingcarditem = listdumy;
             _shopingCard.ShoppingCardItems = shoppingcarditem;
