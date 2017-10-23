@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using ProjectTest.Data.Interface;
 using ProjectTest.Data.Model;
+using Microsoft.AspNetCore.Authorization;
 
 // For more information on enabling MVC for empty projects, visit http://go.microsoft.com/fwlink/?LinkID=397860
 
@@ -22,6 +23,7 @@ namespace ProjectTest.Controllers
             _shoppingCart = shoppingCar;
         }
         // GET: /<controller>/
+        [Authorize]
         public IActionResult CheckOut()
         {
             

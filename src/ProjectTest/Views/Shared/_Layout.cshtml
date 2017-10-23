@@ -32,6 +32,7 @@
                     <li><a asp-controller="Contect" asp-action="Index">Contect</a></li>
                     @await Component.InvokeAsync("CategoryMenuViewComponents")
                     <li class="pull-right">@await Component.InvokeAsync("ShopingCardSummeryViewComponents")</li>
+                    @await Html.PartialAsync("LoginPartial")
                 </ul>
             </div><!-- /.navbar-collapse -->
         </div><!-- /.container-fluid -->

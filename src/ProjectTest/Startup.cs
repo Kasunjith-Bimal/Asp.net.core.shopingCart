@@ -14,6 +14,7 @@ using ProjectTest.Data;
 using Microsoft.EntityFrameworkCore;
 using ProjectTest.Data.Repository;
 using ProjectTest.Data.Model;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 
 namespace ProjectTest
 {
@@ -33,6 +34,7 @@ namespace ProjectTest
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddDbContext<AppDbContext>(options => options.UseSqlServer(_configurationRoot.GetConnectionString("DefaultConnection")));
+            services.AddIdentity<IdentityUser, IdentityRole>().AddEntityFrameworkStores<AppDbContext>();
             services.AddTransient<IDrink, DrinkRepository>();
             services.AddTransient<ICategory, CategoryRepository>();
             services.AddTransient<IShopingCart, ShopingCartRepository>();
@@ -52,6 +54,7 @@ namespace ProjectTest
             app.UseStatusCodePages();
             app.UseStaticFiles();
             app.UseSession();
+            app.UseIdentity();
             DbInitializer.seed(app);
             //app.UseMvcWithDefaultRoute();
             app.UseMvc(route =>
